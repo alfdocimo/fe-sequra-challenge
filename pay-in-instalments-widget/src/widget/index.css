@@ -1,0 +1,20 @@
+.pay-in-instalments-widget__widget-container {
+  padding: 16px;
+  border: 1px solid gainsboro;
+}
+
+.pay-in-instalments-widget__widget-container__header-info {
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.pay-in-instalments-widget__widget-container__header-info__more-info-btn {
+  border: unset;
+  background: unset;
+  cursor: pointer;
+  &:hover {
+    text-decoration: underline;
+  }
+}

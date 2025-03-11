@@ -16,6 +16,7 @@
   width: 100%;
   border: 1px solid gainsboro;
   left: -1px;
+  background-color: white;
 }
 
 .pay-in-instalments-widget__listbox__item {
