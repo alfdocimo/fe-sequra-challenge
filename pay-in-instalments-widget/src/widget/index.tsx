@@ -23,6 +23,7 @@ export const Widget = () => {
           Mas info
         </button>
         <MoreInfoDialog
+          instalmentFee={"123 euros"} // TODO: Get from context
           isOpen={showMoreInfoDialog}
           onClose={() => {
             setShowMoreInfoDialog(false);

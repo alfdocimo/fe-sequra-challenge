@@ -1,0 +1,44 @@
+.pay-in-instalments-widget__more-info-dialog {
+}
+
+.pay-in-instalments-widget__more-info-dialog__header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.pay-in-instalments-widget__more-info-dialog__header__title {
+  font-size: medium;
+  font-weight: bold;
+}
+
+.pay-in-instalments-widget__more-info-dialog__header__subtitle {
+  font-size: x-large;
+  font-weight: bold;
+}
+
+.pay-in-instalments-widget__more-info-dialog__content {
+  background-color: white;
+}
+
+.pay-in-instalments-widget__more-info-dialog__content__list {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.pay-in-instalments-widget__more-info-dialog__content__list__list-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  list-style-type: disc;
+  gap: 12px;
+}
+
+.pay-in-instalments-widget__more-info-dialog__footer {
+  max-width: 400px;
+  text-align: center;
+  margin: 0 auto;
+}

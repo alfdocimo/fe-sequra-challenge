@@ -1,33 +1,54 @@
+import { creditAgreementsApi } from "@/entities/credit-agreements/api";
+import { InstalmentPlan } from "@/entities/credit-agreements/model";
 import { ListBox } from "@/shared/components/listbox";
+import { useFetch } from "@/shared/utils/use-fetch";
 import { useState } from "react";
 
-type ItemType = { text: string; value: string };
-
 export function SelectInstalmentsOptions() {
-  const [selectedItem, setSelectedItem] = useState<ItemType | undefined>();
-  const items = [
-    { text: "Option 1", value: "opt1" },
-    { text: "Option 2", value: "opt2" },
-    { text: "Option 3", value: "opt3" },
-  ];
+  const { data: instalmentsOptionsData, isLoading } = useFetch(() =>
+    creditAgreementsApi.get({ totalWithTax: 1000 })
+  );
+
+  const [selectedInstalmentOption, setSelectedInstalmentOption] = useState<
+    InstalmentPlan | undefined
+  >();
+
+  //TODO: Enhance UX by displaying a loading state here
+  if (isLoading) return null;
 
   return (
-    <ListBox<ItemType>
+    <ListBox<InstalmentPlan>
       onChange={(value) => {
-        setSelectedItem(value);
+        setSelectedInstalmentOption(value);
       }}
     >
       <ListBox.SelectedItem>
-        {selectedItem ? selectedItem.text : "Select an option..."}
+        {selectedInstalmentOption
+          ? mapInstalmentOptionDataToPaymentPerMonth({
+              instalmentPlan: selectedInstalmentOption,
+            })
+          : "Selecciona una opcion"}
         <ListBox.ToggleButton />
       </ListBox.SelectedItem>
       <ListBox.Content>
-        {items.map((item) => (
-          <ListBox.Item key={item.value} value={item}>
-            {item.text}
-          </ListBox.Item>
-        ))}
+        {instalmentsOptionsData?.map((instalmentOptionData, i) => {
+          return (
+            <ListBox.Item key={i} value={instalmentOptionData}>
+              {mapInstalmentOptionDataToPaymentPerMonth({
+                instalmentPlan: instalmentOptionData,
+              })}
+            </ListBox.Item>
+          );
+        })}
       </ListBox.Content>
     </ListBox>
   );
 }
+
+const mapInstalmentOptionDataToPaymentPerMonth = ({
+  instalmentPlan,
+}: {
+  instalmentPlan: InstalmentPlan;
+}) => {
+  return `${instalmentPlan.instalment_count} cuotas de ${instalmentPlan.instalment_total.string}/mes`;
+};
