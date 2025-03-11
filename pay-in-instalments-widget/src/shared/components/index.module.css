@@ -1,0 +1,9 @@
+.listbox{
+    width: 100%;
+
+    & .selected_item{
+        display: flex;
+        justify-content: space-between;
+        padding: 8px;
+    }
+}

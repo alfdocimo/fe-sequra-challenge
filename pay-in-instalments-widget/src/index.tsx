@@ -1,5 +1,5 @@
 import { createRoot } from "react-dom/client";
-import Widget from "@/widget/index";
+import { Widget } from "@/widget/index";
 
 export class PayInInstalmentsWidget {
   private root: ReturnType<typeof createRoot> | null = null;

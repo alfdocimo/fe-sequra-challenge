@@ -1,7 +1,9 @@
-import styles from "./index.module.css";
+import { SelectInstalmentsOptions } from "@/widget/select-instalments-options/index";
 
-export default function Widget() {
+export const Widget = () => {
   return (
-    <div className={styles.pay_in_instalments_widget_container}>index</div>
+    <div>
+      <SelectInstalmentsOptions />
+    </div>
   );
-}
+};
