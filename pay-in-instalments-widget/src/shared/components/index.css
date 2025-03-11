@@ -1,0 +1,29 @@
+.pay-in-instalments-widget__listbox {
+  width: 100%;
+  position: relative;
+  border: 1px solid gainsboro;
+}
+
+.pay-in-instalments-widget__listbox__selected-item {
+  display: flex;
+  justify-content: space-between;
+  margin: 8px;
+  align-items: center;
+}
+
+.pay-in-instalments-widget__listbox__content {
+  position: absolute;
+  width: 100%;
+  border: 1px solid gainsboro;
+  left: -1px;
+}
+
+.pay-in-instalments-widget__listbox__item {
+  padding: 8px;
+}
+
+.pay-in-instalments-widget__listbox__toggle-button {
+  background: unset;
+  border: unset;
+  padding: 8px;
+}

@@ -1,4 +1,5 @@
-import styles from "./index.module.css";
+import { widgetClassnamePrefix } from "@/shared/utils/widget-classname-prefix";
+import "./index.css";
 
 import {
   createContext,
@@ -10,6 +11,8 @@ import {
   ReactNode,
   useCallback,
 } from "react";
+
+const baseClassName = widgetClassnamePrefix("listbox");
 
 type ListBoxContextType<ListBoxType> = {
   selected: ListBoxType | undefined;
@@ -92,7 +95,7 @@ export function ListBox<ListBoxType>({
 
   return (
     <ListBoxContext.Provider value={contextValue}>
-      <div ref={listboxRef} className={styles.listbox}>
+      <div ref={listboxRef} className={baseClassName}>
         {children}
       </div>
     </ListBoxContext.Provider>
@@ -106,7 +109,7 @@ function SelectedItem({ children }: { children: ReactNode }) {
       onClick={() => {
         setIsOpen(true);
       }}
-      className={styles.selected_item}
+      className={`${baseClassName}__selected-item`}
     >
       {children}
     </div>
@@ -118,6 +121,7 @@ function ToggleButton() {
 
   return (
     <button
+      className={`${baseClassName}__toggle-button`}
       onClick={(e) => {
         e.stopPropagation();
         setIsOpen(!isOpen);
@@ -133,7 +137,7 @@ function Content({ children }: { children: ReactNode }) {
 
   if (!isOpen) return null;
 
-  return <div>{children}</div>;
+  return <div className={`${baseClassName}__content`}>{children}</div>;
 }
 
 function Item<ListBoxType>({
@@ -147,6 +151,7 @@ function Item<ListBoxType>({
 
   return (
     <div
+      className={`${baseClassName}__item`}
       onClick={() => {
         setSelected(value);
         setIsOpen(false);
