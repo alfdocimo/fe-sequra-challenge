@@ -11,6 +11,7 @@ import { creditAgreementsApi } from "@/entities/credit-agreements/api";
 import { InstalmentPlans } from "@/entities/credit-agreements/model";
 import { useEventBus } from "@/widget/ui/context/event-bus-context";
 import { useSelectedInstalmentPlan } from "@/widget/ui/context/selected-instalment-plan-context";
+import { eventsApi } from "@/entities/events/api";
 
 type InstalmentPlansByPriceType = {
   instalmentPlansByPrice: InstalmentPlans;
@@ -48,6 +49,12 @@ export const InstalmentPlansByPriceProvider = ({
           });
 
         setSelectedInstalmentPlan(null);
+        eventsApi.sendEvent({
+          contenxt: "merchant-event",
+          type: "price-updated",
+          from: price,
+          to: data.amount,
+        });
       }
     );
 

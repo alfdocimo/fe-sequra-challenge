@@ -6,6 +6,7 @@ import { invariant } from "@/shared/utils/invariant";
 import { PriceProvider } from "@/widget/ui/context/price-context";
 import { InstalmentPlansByPriceProvider } from "@/widget/ui/context/instalment-plans-by-price-context";
 import { SelectedInstalmentPlanProvider } from "@/widget/ui/context/selected-instalment-plan-context";
+import { eventsApi } from "@/entities/events/api";
 
 export class PayInInstalmentsWidget {
   #eventBus: EventBus;
@@ -18,11 +19,13 @@ export class PayInInstalmentsWidget {
       !!element,
       "Element to mount the widget is null or undefined. Have you provided the correct element?"
     );
+    this.#sendEventIfMountElementNotProvided(element);
 
     invariant(
       !!price,
       "A [price] must be specified to start the widget. Have you provided a correct price?"
     );
+    this.#sendEventIfInitialPriceNotProvided(price);
 
     createRoot(element).render(
       <EventBusProvider eventBusClient={this.#eventBus}>
@@ -39,6 +42,24 @@ export class PayInInstalmentsWidget {
 
   get events(): EventBus {
     return this.#eventBus;
+  }
+
+  #sendEventIfMountElementNotProvided(element: HTMLElement) {
+    if (!element) {
+      eventsApi.sendEvent({
+        contenxt: "widget",
+        type: "no-mount-element-provided",
+      });
+    }
+  }
+
+  #sendEventIfInitialPriceNotProvided(price: number) {
+    if (!price) {
+      eventsApi.sendEvent({
+        contenxt: "widget",
+        type: "no-initial-price-provided",
+      });
+    }
   }
 }
 

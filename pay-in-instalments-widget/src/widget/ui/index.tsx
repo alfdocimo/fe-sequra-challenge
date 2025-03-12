@@ -5,6 +5,7 @@ import { useState } from "react";
 
 import { MoreInfoDialog } from "@/widget/ui/components/more-info-dialog";
 import { useSelectedInstalmentPlan } from "@/widget/ui/context/selected-instalment-plan-context";
+import { eventsApi } from "@/entities/events/api";
 
 const baseClassName = widgetClassnamePrefix("widget-container");
 
@@ -33,6 +34,10 @@ export const Widget = () => {
             onMouseOver={() => {
               if (!selectedInstalmentPlan) {
                 setShowSelectInstalmentPlanDisclaimer(true);
+                eventsApi.sendEvent({
+                  contenxt: "more-information-dialog",
+                  type: "no-instalment-selected-hover",
+                });
               }
             }}
             onMouseOut={() => {
@@ -40,6 +45,10 @@ export const Widget = () => {
             }}
             onClick={() => {
               setShowMoreInfoDialog(true);
+              eventsApi.sendEvent({
+                contenxt: "more-information-dialog",
+                type: "open-dialog",
+              });
             }}
             className={`${baseClassName}__header-info__container__more-info-btn`}
           >
@@ -51,6 +60,10 @@ export const Widget = () => {
           isOpen={showMoreInfoDialog}
           onClose={() => {
             setShowMoreInfoDialog(false);
+            eventsApi.sendEvent({
+              contenxt: "more-information-dialog",
+              type: "close-dialog",
+            });
           }}
         />
       </div>

@@ -1,4 +1,5 @@
 import { InstalmentPlan } from "@/entities/credit-agreements/model";
+import { eventsApi } from "@/entities/events/api";
 import { ListBox } from "@/shared/components/listbox";
 import { useInstalmentPlansByPrice } from "@/widget/ui/context/instalment-plans-by-price-context";
 import { useSelectedInstalmentPlan } from "@/widget/ui/context/selected-instalment-plan-context";
@@ -15,6 +16,13 @@ export function SelectInstalmentsOptions() {
     <ListBox<InstalmentPlan>
       onChange={(value) => {
         setSelectedInstalmentPlan(value);
+
+        eventsApi.sendEvent({
+          contenxt: "select-instalments-options",
+          type: "select-instalment-change",
+          from: selectedInstalmentPlan,
+          to: value,
+        });
       }}
     >
       <ListBox.SelectedItem>
