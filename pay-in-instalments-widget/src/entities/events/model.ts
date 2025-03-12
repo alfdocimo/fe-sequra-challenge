@@ -13,7 +13,7 @@ type ContextTypes =
   | "more-info-dialog";
 
 export type EventData = {
-  contenxt:
+  context:
     | `pay-in-instalments-widget-events`
     | `pay-in-instalments-widget-events-${ContextTypes}`; // Required property as stated
   type: EventTypes; // Required property as stated

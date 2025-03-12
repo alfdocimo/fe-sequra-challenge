@@ -18,7 +18,7 @@ export function SelectInstalmentsOptions() {
         setSelectedInstalmentPlan(value);
 
         eventsApi.sendEvent({
-          contenxt:
+          context:
             "pay-in-instalments-widget-events-select-instalments-options",
           type: "selected.instalment.changed",
           from: selectedInstalmentPlan,

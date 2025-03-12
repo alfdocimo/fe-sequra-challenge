@@ -7,8 +7,8 @@ export const eventsApi = {
   sendEvent: (eventData: EventData) => {
     try {
       apiClient.post<unknown, EventData>("/events", {
-        contenxt: eventData.contenxt
-          ? `pay-in-instalments-widget-events-${eventData.contenxt}`
+        context: eventData.context
+          ? `pay-in-instalments-widget-events-${eventData.context}`
           : `pay-in-instalments-widget-events`,
         type: eventData.type,
         ...eventData,

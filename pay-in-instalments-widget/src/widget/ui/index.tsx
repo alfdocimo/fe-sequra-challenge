@@ -35,7 +35,7 @@ export const Widget = () => {
               if (!selectedInstalmentPlan) {
                 setShowSelectInstalmentPlanDisclaimer(true);
                 eventsApi.sendEvent({
-                  contenxt: "pay-in-instalments-widget-events-more-info-dialog",
+                  context: "pay-in-instalments-widget-events-more-info-dialog",
                   type: "no.instalment.provided.hover.more.info.btn",
                 });
               }
@@ -46,7 +46,7 @@ export const Widget = () => {
             onClick={() => {
               setShowMoreInfoDialog(true);
               eventsApi.sendEvent({
-                contenxt: "pay-in-instalments-widget-events-more-info-dialog",
+                context: "pay-in-instalments-widget-events-more-info-dialog",
                 type: "open.dialog",
               });
             }}
@@ -61,7 +61,7 @@ export const Widget = () => {
           onClose={() => {
             setShowMoreInfoDialog(false);
             eventsApi.sendEvent({
-              contenxt: "pay-in-instalments-widget-events-more-info-dialog",
+              context: "pay-in-instalments-widget-events-more-info-dialog",
               type: "close.dialog",
             });
           }}

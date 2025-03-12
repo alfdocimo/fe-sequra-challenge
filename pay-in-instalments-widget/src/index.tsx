@@ -47,7 +47,7 @@ export class PayInInstalmentsWidget {
   #sendEventIfMountElementNotProvided(element: HTMLElement) {
     if (!element) {
       eventsApi.sendEvent({
-        contenxt: "pay-in-instalments-widget-events-root",
+        context: "pay-in-instalments-widget-events-root",
         type: "mount.element.not.provided",
       });
     }
@@ -56,7 +56,7 @@ export class PayInInstalmentsWidget {
   #sendEventIfInitialPriceNotProvided(price: number) {
     if (!price) {
       eventsApi.sendEvent({
-        contenxt: "pay-in-instalments-widget-events-root",
+        context: "pay-in-instalments-widget-events-root",
         type: "mount.price.not.provided",
       });
     }
