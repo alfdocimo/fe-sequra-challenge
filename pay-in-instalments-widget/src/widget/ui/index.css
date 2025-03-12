@@ -10,11 +10,23 @@
   justify-content: space-between;
 }
 
-.pay-in-instalments-widget__widget-container__header-info__more-info-btn {
+.pay-in-instalments-widget__widget-container__header-info__container {
+  position: relative;
+}
+
+.pay-in-instalments-widget__widget-container__header-info__container__more-info-btn {
   border: unset;
   background: unset;
   cursor: pointer;
-  &:hover {
-    text-decoration: underline;
-  }
+}
+
+.pay-in-instalments-widget__widget-container__header-info__container__more-info-btn-popover {
+  position: absolute;
+  top: 24px;
+  right: 0px;
+  background-color: gainsboro;
+  border-radius: 8px;
+  padding: 16px;
+  z-index: 10;
+  width: 120px;
 }
