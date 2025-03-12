@@ -50,8 +50,8 @@ export const InstalmentPlansByPriceProvider = ({
 
         setSelectedInstalmentPlan(null);
         eventsApi.sendEvent({
-          contenxt: "merchant-event",
-          type: "price-updated",
+          contenxt: "pay-in-instalments-widget-events",
+          type: "update.price",
           from: price,
           to: data.amount,
         });
