@@ -1,14 +1,16 @@
 import { widgetClassnamePrefix } from "@/shared/utils/widget-classname-prefix";
 import "./index.css";
-import { SelectInstalmentsOptions } from "@/widget/ui/select-instalments-options/index";
+import { SelectInstalmentsOptions } from "@/widget/ui/components/select-instalments-options/index";
 import { useState } from "react";
 
-import { MoreInfoDialog } from "@/widget/ui/more-info-dialog";
+import { MoreInfoDialog } from "@/widget/ui/components/more-info-dialog";
+import { useSelectedInstalmentPlan } from "@/widget/ui/context/selected-instalment-plan-context";
 
 const baseClassName = widgetClassnamePrefix("widget-container");
 
 export const Widget = () => {
   const [showMoreInfoDialog, setShowMoreInfoDialog] = useState(false);
+  const { selectedInstalmentPlan } = useSelectedInstalmentPlan();
 
   return (
     <div className={baseClassName}>
@@ -23,7 +25,7 @@ export const Widget = () => {
           Mas info
         </button>
         <MoreInfoDialog
-          instalmentFee={"123 euros"} // TODO: Get from context
+          instalmentFee={selectedInstalmentPlan?.instalment_fee.string ?? "N/A"}
           isOpen={showMoreInfoDialog}
           onClose={() => {
             setShowMoreInfoDialog(false);

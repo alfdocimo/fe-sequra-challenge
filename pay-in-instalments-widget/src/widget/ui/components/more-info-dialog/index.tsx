@@ -46,10 +46,17 @@ export function MoreInfoDialog({
           </ul>
         </div>
         <footer className={`${baseClassName}__footer`}>
-          <span>
-            Ademas en el importe mostrado ya se incluye la cuota unica mensual
-            de {instalmentFee}, por lo que no tendras ninguna sorpresa
-          </span>
+          {instalmentFee ? (
+            <span>
+              Ademas en el importe mostrado ya se incluye la cuota unica mensual
+              de {instalmentFee}, por lo que no tendras ninguna sorpresa
+            </span>
+          ) : (
+            <span>
+              Selecciona una opcion de financiacion para saber mas sobre tu
+              cuota unica mensual
+            </span>
+          )}
         </footer>
       </div>
     </Modal>

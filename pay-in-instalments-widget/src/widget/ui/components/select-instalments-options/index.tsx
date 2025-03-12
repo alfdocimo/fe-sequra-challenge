@@ -1,37 +1,32 @@
-import { creditAgreementsApi } from "@/entities/credit-agreements/api";
 import { InstalmentPlan } from "@/entities/credit-agreements/model";
 import { ListBox } from "@/shared/components/listbox";
-import { useFetch } from "@/shared/utils/use-fetch";
-import { useState } from "react";
+import { useInstalmentPlansByPrice } from "@/widget/ui/context/instalment-plans-by-price-context";
+import { useSelectedInstalmentPlan } from "@/widget/ui/context/selected-instalment-plan-context";
 
 export function SelectInstalmentsOptions() {
-  const { data: instalmentsOptionsData, isLoading } = useFetch(() =>
-    creditAgreementsApi.get({ totalWithTax: 1000 })
-  );
-
-  const [selectedInstalmentOption, setSelectedInstalmentOption] = useState<
-    InstalmentPlan | undefined
-  >();
+  const { instalmentPlansByPrice } = useInstalmentPlansByPrice();
+  const { selectedInstalmentPlan, setSelectedInstalmentPlan } =
+    useSelectedInstalmentPlan();
 
   //TODO: Enhance UX by displaying a loading state here
-  if (isLoading) return null;
+  if (!instalmentPlansByPrice) return null;
 
   return (
     <ListBox<InstalmentPlan>
       onChange={(value) => {
-        setSelectedInstalmentOption(value);
+        setSelectedInstalmentPlan(value);
       }}
     >
       <ListBox.SelectedItem>
-        {selectedInstalmentOption
+        {selectedInstalmentPlan
           ? mapInstalmentOptionDataToPaymentPerMonth({
-              instalmentPlan: selectedInstalmentOption,
+              instalmentPlan: selectedInstalmentPlan,
             })
           : "Selecciona una opcion"}
         <ListBox.ToggleButton />
       </ListBox.SelectedItem>
       <ListBox.Content>
-        {instalmentsOptionsData?.map((instalmentOptionData, i) => {
+        {instalmentPlansByPrice?.map((instalmentOptionData, i) => {
           return (
             <ListBox.Item key={i} value={instalmentOptionData}>
               {mapInstalmentOptionDataToPaymentPerMonth({
