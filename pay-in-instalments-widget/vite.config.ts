@@ -1,6 +1,9 @@
+/// <reference types="vitest/config" />
+
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import path from "path";
+import { configDefaults } from "vitest/config.js";
 
 export default defineConfig({
   plugins: [react()],
@@ -25,5 +28,18 @@ export default defineConfig({
   },
   define: {
     "process.env": {},
+  },
+  test: {
+    environment: "jsdom",
+    globals: true,
+    setupFiles: path.resolve(__dirname, "src/tests/setup.ts"),
+    exclude: [
+      "**/node_modules/**",
+      "**/dist/**",
+      "**/cypress/**",
+      "**/.{idea,git,cache,output,temp}/**",
+      "**/{karma,rollup,webpack,vite,vitest,jest,ava,babel,nyc,cypress,tsup,build,eslint,prettier}.config.*",
+      "**/e2e/**",
+    ],
   },
 });
