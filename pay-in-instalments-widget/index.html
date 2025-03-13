@@ -15,7 +15,7 @@
 
         const $updatePriceBtn = document.getElementById("update-price-btn");
         $updatePriceBtn.addEventListener("click", () => {
-          payInInstalmentsWidget.events.emit("price_update", { amount: 80000 });
+          payInInstalmentsWidget.events.emit("price.update", { amount: 80000 });
           $itemPrice.innerHTML = `Item price: 80000 €`;
         });
       });

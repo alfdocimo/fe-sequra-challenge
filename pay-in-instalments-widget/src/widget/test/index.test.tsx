@@ -41,7 +41,7 @@ describe("Widget UI", () => {
     );
   });
 
-  it("Should display initial instalment options and update prices when event [price_update] is emitted and price changes from [10000] to [80000]", async () => {
+  it("Should display initial instalment options and update prices when event [price.update] is emitted and price changes from [10000] to [80000]", async () => {
     server.use(
       http.get(
         "http://localhost:8080/credit_agreements?totalWithTax=*",
@@ -185,7 +185,7 @@ describe("Widget UI", () => {
       ).toHaveTextContent("3 cuotas de 38,33 €/mes")
     );
 
-    eventBus.emit("price_update", { amount: 80000 });
+    eventBus.emit("price.update", { amount: 80000 });
 
     userEvent.click(options);
 

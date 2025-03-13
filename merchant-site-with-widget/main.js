@@ -15,7 +15,7 @@ $(document).ready(function () {
 
     // Emit event! 🔗
     const updatePriceFormatted = updatePrice * 100;
-    window.payInInstalmentsWidget.events.emit("price_update", {
+    window.payInInstalmentsWidget.events.emit("price.update", {
       amount: updatePriceFormatted,
     });
     $("#product-price").html($(this).find("span").attr("data-price"));

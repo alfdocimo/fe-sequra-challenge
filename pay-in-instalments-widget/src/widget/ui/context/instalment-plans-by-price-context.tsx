@@ -40,7 +40,7 @@ export const InstalmentPlansByPriceProvider = ({
 
   useEffect(() => {
     const updatePriceSubscription = eventBusClient.subscribe(
-      "price_update",
+      "price.update",
       (data) => {
         creditAgreementsApi
           .get({ totalWithTax: data.amount })
@@ -59,7 +59,7 @@ export const InstalmentPlansByPriceProvider = ({
     );
 
     return () => {
-      eventBusClient.unsubscribe("price_update", updatePriceSubscription);
+      eventBusClient.unsubscribe("price.update", updatePriceSubscription);
     };
 
     // Exclude from deps, as subscribe method will take care of updating the state

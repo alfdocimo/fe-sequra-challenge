@@ -1,5 +1,5 @@
 type EventMap = {
-  price_update: { amount: number };
+  "price.update": { amount: number };
 };
 
 type EventList = keyof EventMap;
