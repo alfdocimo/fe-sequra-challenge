@@ -28,9 +28,11 @@ export function SelectInstalmentsOptions() {
     >
       <ListBox.SelectedItem>
         {selectedInstalmentPlan ? (
-          mapInstalmentOptionDataToPaymentPerMonth({
-            instalmentPlan: selectedInstalmentPlan,
-          })
+          <span data-testid="instalment-option-selected-item">
+            {mapInstalmentOptionDataToPaymentPerMonth({
+              instalmentPlan: selectedInstalmentPlan,
+            })}
+          </span>
         ) : (
           <span data-testid="instalment-option-default">
             Selecciona una opcion
