@@ -34,6 +34,14 @@ pnpm run test:e2e
 pnpm run test
 ```
 
+## Build our solution for merchant websites
+
+```sh
+pnpm run build
+```
+
+This will generate our .js and .css files inside of `/dist`
+
 ## Structure
 
 The following repo uses an ad-hoc version of [Feature Slice Design](https://feature-sliced.design/)
