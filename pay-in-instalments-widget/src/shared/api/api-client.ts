@@ -58,7 +58,8 @@ async function typedFetch<ResponseType>(
 
   invariant(!!response.ok, `HTTP error! Status: ${response.status}`);
   //Note: this throws always for /events api as the body is an empty body, not parseable as json
-  invariant(Number(contentLength), `HTTP error! Content-Length is 0`);
+  // invariant(Number(contentLength), `HTTP error! Content-Length is 0`);
+  if (Number(contentLength) === 0) return;
 
   return response?.json() as Promise<ResponseType>;
 }

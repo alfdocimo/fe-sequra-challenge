@@ -27,21 +27,27 @@ export function SelectInstalmentsOptions() {
       }}
     >
       <ListBox.SelectedItem>
-        {selectedInstalmentPlan
-          ? mapInstalmentOptionDataToPaymentPerMonth({
-              instalmentPlan: selectedInstalmentPlan,
-            })
-          : "Selecciona una opcion"}
+        {selectedInstalmentPlan ? (
+          mapInstalmentOptionDataToPaymentPerMonth({
+            instalmentPlan: selectedInstalmentPlan,
+          })
+        ) : (
+          <span data-testid="instalment-option-default">
+            Selecciona una opcion
+          </span>
+        )}
         <ListBox.ToggleButton />
       </ListBox.SelectedItem>
       <ListBox.Content>
         {instalmentPlansByPrice?.map((instalmentOptionData, i) => {
           return (
-            <ListBox.Item key={i} value={instalmentOptionData}>
-              {mapInstalmentOptionDataToPaymentPerMonth({
-                instalmentPlan: instalmentOptionData,
-              })}
-            </ListBox.Item>
+            <div key={i} data-testid={`instalment-option-${i}`}>
+              <ListBox.Item value={instalmentOptionData}>
+                {mapInstalmentOptionDataToPaymentPerMonth({
+                  instalmentPlan: instalmentOptionData,
+                })}
+              </ListBox.Item>
+            </div>
           );
         })}
       </ListBox.Content>
