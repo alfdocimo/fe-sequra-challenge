@@ -1,4 +1,4 @@
-import { describe, it, expect, afterAll } from "vitest";
+import { describe, it, expect } from "vitest";
 import { render, screen, waitFor } from "@testing-library/react";
 import { EventBus } from "@/widget/event-bus/index";
 import { EventBusProvider } from "@/widget/ui/context/event-bus-context";

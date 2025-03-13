@@ -29,6 +29,12 @@
   gap: 16px;
 }
 
+.pay-in-instalments-widget__more-info-dialog__content__list {
+  li {
+    text-decoration-line: unset;
+  }
+}
+
 .pay-in-instalments-widget__more-info-dialog__content__list__list-item {
   display: flex;
   align-items: center;
