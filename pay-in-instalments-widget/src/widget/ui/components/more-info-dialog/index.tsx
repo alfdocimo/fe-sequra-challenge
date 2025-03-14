@@ -38,7 +38,7 @@ export function MoreInfoDialog({
             <li>
               <div className={`${baseClassName}__content__list__list-item`}>
                 <span>
-                  El resto de pagos se cargaran automaticamente en tu targeta
+                  El resto de pagos se cargarán automáticamente en tu tarjeta
                 </span>
                 <img src="https://placehold.co/60" alt="placeholder-image" />
               </div>
@@ -47,8 +47,8 @@ export function MoreInfoDialog({
         </div>
         <footer className={`${baseClassName}__footer`}>
           <span>
-            Ademas en el importe mostrado ya se incluye la cuota unica mensual
-            de {instalmentFee}, por lo que no tendras ninguna sorpresa
+            Además, en el importe mostrado ya se incluye la cuota única mensual
+            de {instalmentFee}, por lo que no tendrás ninguna sorpresa
           </span>
         </footer>
       </div>
