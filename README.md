@@ -243,7 +243,7 @@ For instance:
 }
 ```
 
-#### Ship as an SDK
+#### Ship with types
 
 In case we are shipping our solution to a broader ecosystem, (not react specific) - It would be a great addition to ship our `Types`
 
@@ -265,4 +265,8 @@ export default defineConfig({
 });
 ```
 
+![](./docs/types-def.png)
+
 This way, we are providing a better DX for customers that use our widget with their web-based solutions.
+
+![](./docs/types-for-widget.gif)
