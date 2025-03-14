@@ -16,6 +16,8 @@ This project is a React-based widget that displays installment options for a giv
 
 🔵 **JSDOM** – Simulated browser environment for tests
 
+🔵 **MSW** – Mock HTTP API requests for tests (or development)
+
 ## Getting started
 
 👉 Install the dependencies

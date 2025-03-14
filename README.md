@@ -84,7 +84,7 @@ For instance, the merchant website should be able to easily customize all the co
 pnpm create vite@latest pay-in-instalments-widget --template react-ts
 ```
 
-I decided to init a new a new package called `pay-in-instalments-widget`. This package should be agnostic of any merchant, and should expose a simple API as explained above in the [Brainstorming and Analysis](#brainstorming-and-analysis) section
+I decided to init a new a new package called `pay-in-instalments-widget`. This package should be agnostic to any merchant, and should expose a simple API as explained above in the [Brainstorming and Analysis](#brainstorming-and-analysis) section
 
 I have taken some considerations into account - both regarding the challenge itself and some that I would discuss with the _development_ and _product team_. The tech stack that I have chosen is the following:
 
@@ -130,16 +130,16 @@ Technologies that I considered, but I will not be using for the challenge:
 
 - **Tailwindcss**:
 
-  - I would use tailwindcss if this widget shouldn't be customizable, as an assumption I believe every merchant site should be able to configure (within some restrictions) the way the widget looks like
-  - Also, the should keep in mind the bundle size that it adds if not tree-shaked
+  - I would have used tailwindcss if this widget shouldn't be as _customizable_, as an assumption I believe every merchant site should be able to configure (within some restrictions) the way the widget looks like
+  - Also, we should keep in mind the bundle size that tailwind adds if not tree-shaken
 
 - **Axios**
 
-  - I like having a typesafe layer in order to interact with external services, however for the scope of the project I belive we could achieve the same with a minimal wrapper around the native `fetch`
+  - I like having a TypeSafe API layer in order to interact with external services, however for the scope of the project I believe we could achieve the same with a minimal wrapper around the native `fetch`
 
 - **@tanstack/react-query**
 
-  - Revalidating and maintaining the information up-to-date with our server is crucial, specially in dynamic web-apps. I believe that @tanstack/react-query would be a great add-on to our architecture, but I believe for this challenge we could achieve something close with a smaller vanilla implementation of a _refetch_ system that triggers every time an _event_ is fired. Also - this pairs up well with a _PubSub_ system.
+  - Revalidating and maintaining the information up-to-date with our server is crucial, specially in dynamic web-apps. I believe that @tanstack/react-query would be a great add-on to our architecture, but I believe for this challenge we could achieve something close with a smaller vanilla implementation of a _refetch_ system that triggers every time an _event_ is fired. Also - this pairs up well with a _PubSub/EventBus_ system.
 
 - **headless ui**
   - While I do believe that headless helps ups as much as having a component library - I believe that it also has a trade-of in bundle size, and in flexibility. Given that the scope of the widget is for it to be customizable, I have decided to own the implementation of each of the components
@@ -151,7 +151,7 @@ The following is a high-level diagram of the architecture I have implemented
 
 The `widget` instance has access to the `EventBus` through the `events` method. It can subscribe and emit events. This way, every merchant site, can integrate easily with our widget.
 
-The EventBus is the one in charge of detecting wether we need to fetch new data from the API if the price changes (increase or decrease)
+The `EventBus` is the one in charge of detecting wether we need to fetch new data from the API if the price changes (increase or decrease)
 
 For example, lets take the following page:
 
@@ -182,7 +182,7 @@ Let's break down these two use cases:
 
 ### Testing strategy
 
-I have implemented critical e2e testing and integration tests. The e2e tests were done with `playwright` and the test a browser with the widget mounting to an element, as it would in a merchant website
+I have implemented critical e2e testing and integration tests. The e2e tests were done with `playwright` and they test a browser, with the widget mounting to an element, as it would in a merchant website
 
 I have used `vitest` along with `jsdom`, `msw` and `react-testing-library` in order to test our core business logic, as well as other components.
 
