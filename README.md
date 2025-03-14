@@ -153,6 +153,33 @@ The `widget` instance has access to the `EventBus` through the `events` method. 
 
 The EventBus is the one in charge of detecting wether we need to fetch new data from the API if the price changes (increase or decrease)
 
+For example, lets take the following page:
+
+![](./docs//example-widget-merchant.png)
+
+In this case, the merchant site has instantiated the widget with an `element` and an starting `price`
+
+In case the user decides to update the price, then the flow would look like this:
+
+![](./docs/flow-diagram.png)
+
+Let's break down these two use cases:
+
+1. Instantiating the Widget:
+
+- The merchant site mounts the widget in a specific element with an initial price of 1000.
+- The widget communicates with the API to fetch installment options for the price 1000.
+- The API returns installment options for the given price.
+- The widget renders itself in the specified element with the received installment options.
+
+2. Updating the Price:
+
+- The user updates the price to 2000.
+- The merchant site emits a `price.update` event through the EventBus, with the new amount { amount: 2000 }.
+- The widget listens to this event and reacts by:
+  - Fetching new installment options from the API for price 2000.
+  - Receiving the updated installment options from the API.
+
 ### Testing strategy
 
 I have implemented critical e2e testing and integration tests. The e2e tests were done with `playwright` and the test a browser with the widget mounting to an element, as it would in a merchant website
