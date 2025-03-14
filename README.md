@@ -196,3 +196,58 @@ You can [find the website with the widget implemented here](./merchant-site-with
 ### Final thoughts
 
 This has been an awesome challenge, in the sense that I have learned a lot from thinking about the implementation beforehand and then tackling it from a technical perspective. I have also gained more insights about how widgets systems would work in 3rd party websites
+
+### Future improvements
+
+These are things that I am aware should be implemented by having a long term vision of the product
+
+#### Translations
+
+As an assumption, this widget will operate on various merchants. These merchants could be anywhere in the world, and they should be able to customize the language they want the widget to use. This is one of the options that I believe we could add to the initial `config` of the widget. For instance:
+
+```html
+const widget = new PayInInstalmentsWidget({ locale: 'ca-ES' })
+```
+
+We could even emit and subscribe to changes in language
+
+```html
+widget.events.emit('update.locale','es-ES')
+```
+
+#### Design tokens
+
+We could replace the current hardcoded styles with design tokens from our brand, so that by default it ships with the seQura look and feel.
+
+For instance:
+
+```css
+.pay-in-instalments-widget__more-info-dialog__content {
+  background: var(--primary-color);
+  border-radius: var(--border-radius-md);
+}
+```
+
+#### Ship as an SDK
+
+In case we are shipping our solution to a broader ecosystem, (not react specific) - It would be a great addition to ship our `Types`
+
+I would have considered using [vite-plugin-dts](https://www.npmjs.com/package/vite-plugin-dts) which allows us to ship not only our `js` and `css` files but also our type definitions.
+
+Defining it should be as straight forward as adding it to our vite.config.ts file
+
+```ts
+export default defineConfig({
+  plugins: [
+    // ...
+    dtsPlugin({
+      entryRoot: "src",
+      outDir: "dist/types",
+      insertTypesEntry: true,
+      tsconfigPath: "./tsconfig.app.json",
+    }),
+  ],
+});
+```
+
+This way, we are providing a better DX for customers that use our widget with their web-based solutions.
