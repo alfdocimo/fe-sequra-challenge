@@ -35,7 +35,7 @@ export function SelectInstalmentsOptions() {
           </span>
         ) : (
           <span data-testid="instalment-option-default">
-            Selecciona una opcion
+            Selecciona una opción
           </span>
         )}
         <ListBox.ToggleButton />

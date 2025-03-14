@@ -20,13 +20,13 @@ export const Widget = () => {
   return (
     <div className={baseClassName}>
       <div className={`${baseClassName}__header-info`}>
-        <span>Pagalo en</span>
+        <span>Págalo en</span>
         <div className={`${baseClassName}__header-info__container`}>
           {showSelectInstalmentPlanDisclaimer && (
             <div
               className={`${baseClassName}__header-info__container__more-info-btn-popover`}
             >
-              <span>Debes seleccionar una opcion de pago primero</span>
+              <span>Debes seleccionar una opción de pago primero</span>
             </div>
           )}
           <button
@@ -52,7 +52,7 @@ export const Widget = () => {
             }}
             className={`${baseClassName}__header-info__container__more-info-btn`}
           >
-            Mas info
+            Más info
           </button>
         </div>
         <MoreInfoDialog
