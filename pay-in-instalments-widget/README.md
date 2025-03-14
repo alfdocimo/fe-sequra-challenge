@@ -2,6 +2,15 @@
 
 This project is a React-based widget that displays installment options for a given product on a merchant's website. The widget is designed to be easily embeddable on third-party sites and updates dynamically when the product price changes.
 
+## TOC
+
+- [Tech Stack](#tech-stack)
+- [Getting started](#getting-started)
+- [Build our solution for merchant websites](#build-our-solution-for-merchant-websites)
+- [Usage in 3rd party websites (Merchants)](#usage-in-3rd-party-websites-merchants)
+- [Structure](#structure)
+  - [Directories](#directories)
+
 ## Tech Stack
 
 🔵 **Vite** – Provides out-of-the-box support for common web patterns/frameworks

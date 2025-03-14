@@ -1,5 +1,20 @@
 # Solution to the challenge log ✍️
 
+## TOC
+
+- [Brainstorming and Analysis](#brainstorming-and-analysis)
+  - [MVP of the widget](#mvp-of-the-widget)
+  - [Styling](#styling)
+- [Implementation](#implementation)
+  - [Overview of the functionality](#overview-of-the-functionality)
+  - [Testing strategy](#testing-strategy)
+  - [Implementation of the widget](#implementation-of-the-widget)
+  - [Final thoughts](#final-thoughts)
+  - [Future improvements](#future-improvements)
+    - [Translations](#translations)
+    - [Design tokens](#design-tokens)
+    - [Ship as an SDK](#ship-as-an-sdk)
+
 ## Brainstorming and Analysis
 
 Having taken a look at the challenge's [read me doc](README.md), I started by brainstorming what the end product would look like.
