@@ -1,14 +1,20 @@
 type EventMap = {
   "price.update": { amount: number };
+  "price.change": { from: number; to: number };
 };
 
 type EventList = keyof EventMap;
-type EventFunction = (data: EventMap[EventList]) => void;
+
+type EventFunction<SelectedEvent extends EventList> = (
+  data: EventMap[SelectedEvent]
+) => void;
 
 export class EventBus {
-  private handlers: Map<EventList, Set<EventFunction>> = new Map();
-
-  subscribe(event: EventList, fn: EventFunction) {
+  private handlers: Map<EventList, Set<EventFunction<EventList>>> = new Map();
+  subscribe<SelectedEvent extends EventList>(
+    event: SelectedEvent,
+    fn: EventFunction<SelectedEvent>
+  ) {
     if (!this.handlers.has(event)) {
       this.handlers.set(event, new Set());
     }
@@ -17,11 +23,17 @@ export class EventBus {
     return () => this.unsubscribe(event, fn);
   }
 
-  unsubscribe(event: EventList, fn: EventFunction) {
+  unsubscribe<SelectedEvent extends EventList>(
+    event: SelectedEvent,
+    fn: EventFunction<SelectedEvent>
+  ) {
     this.handlers.get(event)?.delete(fn);
   }
 
-  emit(event: EventList, data: EventMap[EventList]) {
+  emit<SelectedEvent extends EventList>(
+    event: SelectedEvent,
+    data: EventMap[SelectedEvent]
+  ) {
     this.handlers.get(event)?.forEach((fn) => fn(data));
   }
 }
