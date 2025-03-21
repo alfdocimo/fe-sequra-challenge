@@ -153,7 +153,7 @@ test("Its able to select an instalment option", async ({ page }) => {
   const defaultSelectedOptionText = await page.locator(
     ".pay-in-instalments-widget__listbox__selected-item"
   );
-  expect(defaultSelectedOptionText).toHaveText("Selecciona una opcion");
+  expect(defaultSelectedOptionText).toHaveText("Selecciona una opción");
 
   const toggleSelectOptionsButton = await page.locator(
     ".pay-in-instalments-widget__listbox__toggle-button"
@@ -186,7 +186,7 @@ test("Its able to update price when merchant emits events", async ({
   const defaultSelectedOptionText = await page.locator(
     ".pay-in-instalments-widget__listbox__selected-item"
   );
-  expect(defaultSelectedOptionText).toHaveText("Selecciona una opcion");
+  expect(defaultSelectedOptionText).toHaveText("Selecciona una opción");
 
   const toggleSelectOptionsButton = await page.locator(
     ".pay-in-instalments-widget__listbox__toggle-button"
